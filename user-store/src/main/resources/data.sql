@@ -1,0 +1,17 @@
+INSERT INTO roles (id, name)
+  SELECT * FROM (SELECT 1, 'ROLE_USER') AS tmp
+  WHERE NOT EXISTS (
+    SELECT name FROM roles WHERE name = 'ROLE_USER'
+  ) LIMIT 1;
+
+INSERT INTO roles (id, name)
+  SELECT * FROM (SELECT 2, 'ROLE_MODERATOR') AS tmp
+  WHERE NOT EXISTS (
+    SELECT name FROM roles WHERE name = 'ROLE_MODERATOR'
+  ) LIMIT 1;
+
+INSERT INTO roles (id, name)
+  SELECT * FROM (SELECT 3, 'ROLE_ADMIN') AS tmp
+  WHERE NOT EXISTS (
+    SELECT name FROM roles WHERE name = 'ROLE_ADMIN'
+  ) LIMIT 1;

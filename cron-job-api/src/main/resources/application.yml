@@ -1,0 +1,16 @@
+swagger:
+  application:
+    name: cron-job-api
+    description: all cron job schedulars
+    version: 0.0.1
+
+init-cronjob:
+  cronjobs:
+    - job-name: train-label-classification-model
+      job-group: classification
+      target-url: ai-data-stream:10010/trainClassificationModel
+      cron-expression: "0 0 1 * * ?"
+    - job-name: stream-crawl-data
+      job-group: webcrawl
+      target-url: ai-data-stream:10010/crawlData
+      cron-expression: "0 0 */2 ? * *"
