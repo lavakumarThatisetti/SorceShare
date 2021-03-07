@@ -6,6 +6,8 @@
         <option value="$PROJECT_DIR$/user-store/pom.xml" />
         <option value="$PROJECT_DIR$/ai-feed-service/pom.xml" />
         <option value="$PROJECT_DIR$/cron-job-api/pom.xml" />
+        <option value="$PROJECT_DIR$/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/service-registry/pom.xml" />
       </list>
     </option>
   </component>
