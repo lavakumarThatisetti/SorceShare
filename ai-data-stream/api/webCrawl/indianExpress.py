@@ -30,20 +30,20 @@ def get_opinions():
             story_date = pd.to_datetime(story_date[story_date.index(":") + 1:].strip()).date()
         else:
             story_date = pd.to_datetime(story_date.strip()).date()
-        # if story_date != datetime.today().date():
-        #     continue
+        if story_date != datetime.today().date():
+            continue
         story_title = each_story.find('h1', class_='native_story_title').text
         story_description = each_story.find('h2', class_='synopsis').text
         story_details = each_story.find('div', class_='story-details')
         full_content = story_details.find('div', {"id": "pcl-full-content"}).find_all('p')
         full_content = full_content[:-1]
         article = {
-            'article_title': story_title,
-            'article_labels': lableClassification.predict_real_data(story_title),
-            'article_summary': textSummarization.text_summary(full_content),
-            'article_sentiment': textSentiment.text_sentiment(story_description),
-            'article_sources': [link],
-            'article_date': str(story_date)
+            'articleTitle': story_title,
+            'articleLabels': lableClassification.predict_real_data(story_title),
+            'articleSummary': textSummarization.text_summary(full_content),
+            'articleSentiment': textSentiment.text_sentiment(story_description),
+            'articleSources': [link],
+            'articleDate': str(story_date)
         }
         # articles.append(article)
         indian_express_cache[link] = story_title

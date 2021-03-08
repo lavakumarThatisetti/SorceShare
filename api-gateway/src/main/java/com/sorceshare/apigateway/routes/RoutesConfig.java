@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
 @Slf4j
 public class RoutesConfig {
 
-    private static final String USER_SIGN_IN_PATH = "/SignIn/**";
+    private static final String USER_SIGN_IN_PATH = "/SignIn";
     private static final String USER_SIGN_UP_PATH = "/SignUp/**";
 
     @Autowired
