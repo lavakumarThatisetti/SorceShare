@@ -5,6 +5,7 @@ from datetime import datetime
 from api.webCrawl.textSummary import textSummarization
 from api.webCrawl.textSentiment import textSentiment
 from api.webCrawl.classification import lableClassification
+import uuid
 indian_express_links = {
     "opinion": "https://indianexpress.com/section/opinion/",
     "india": "https://indianexpress.com/section/opinion/"
@@ -14,7 +15,7 @@ indian_express_cache = {}
 
 
 def get_opinions():
-    # articles = []
+    print("In Opinions")
     indian_express = requests.get(indian_express_links['opinion']).text
     indian_express_soup = BeautifulSoup(indian_express, 'lxml')
     all_opinions = indian_express_soup.find('div', class_="profile-container m-premium")
@@ -38,6 +39,7 @@ def get_opinions():
         full_content = story_details.find('div', {"id": "pcl-full-content"}).find_all('p')
         full_content = full_content[:-1]
         article = {
+            'id': str(uuid.uuid4()),
             'articleTitle': story_title,
             'articleLabels': lableClassification.predict_real_data(story_title),
             'articleSummary': textSummarization.text_summary(full_content),
@@ -45,6 +47,5 @@ def get_opinions():
             'articleSources': [link],
             'articleDate': str(story_date)
         }
-        # articles.append(article)
         indian_express_cache[link] = story_title
         yield article

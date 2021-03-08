@@ -4,7 +4,7 @@ from api.webCrawl.classification import lableClassification
 import uvicorn
 from fastapi import FastAPI
 from api.webCrawl.kafkaservice import kafkaConnection
-from kafka import KafkaProducer
+
 topicName = 'article_topic_test'
 app = FastAPI()
 enabled_channels = ['indian_express']
@@ -12,14 +12,17 @@ enabled_channels = ['indian_express']
 scheduler = BackgroundScheduler(daemon=True)
 scheduler.start()
 
+producer = None
+
 
 def get_crawl_data():
-    producer = kafkaConnection.connect_kafka()
+    global producer
+    if producer is None:
+        producer = kafkaConnection.connect_kafka()
     articles = indianExpress.get_opinions()
     for article in articles:
         print(article)
         producer.send(topicName, value=article)
-    # print(articles)
 
 # scheduler.add_job(
 #     lableClassification.trainModel,

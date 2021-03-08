@@ -4,12 +4,15 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @EqualsAndHashCode
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document
+@Builder
+@Document(collection = "articles")
 public class Article {
 
     @Id
@@ -17,13 +20,13 @@ public class Article {
 
     private String articleTitle;
 
-    private String articleLabels;
+    private List<String> articleLabels;
 
     private String articleSummary;
 
-    private String articleSentiment;
+    private boolean articleSentiment;
 
-    private String articleSources;
+    private List<String> articleSources;
 
     private String articleDate;
 

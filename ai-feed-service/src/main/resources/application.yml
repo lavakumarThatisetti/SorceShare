@@ -1,2 +1,24 @@
 server:
   port: 8081
+
+kafka:
+  brokers:
+    - localhost:9092
+  topic: article_topic_test
+  groupId: article_group
+
+spring:
+  application:
+    name: ai-stream-service
+    description: articles feed from here
+    version: 0.0.1
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      authentication-database: admin
+      database: sorceshare
+      username: mongoadmin
+      password: mongopassword287
+      repositories:
+        enabled: true
