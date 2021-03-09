@@ -19,7 +19,6 @@ eureka:
     hostname: localhost
 
 routes:
-  userStore:
-    url:
-      signUp: lb://USER-STORE-API/api/auth/signUp
-      signIn: lb://USER-STORE-API/api/auth/signIn
+  url:
+    userStore: lb://USER-STORE-API/
+    aiFeedService: lb://AI-STREAM-SERVICE/

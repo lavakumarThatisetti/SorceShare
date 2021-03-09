@@ -31,10 +31,10 @@ public class AIStreamController {
     private final AiFeedService aiFeedService;
 
 
-    @GetMapping(value = "/getArticles",produces = "application/stream+json")
+    @GetMapping(value = "/initialLoadArticles",produces = "application/stream+json")
     public Flux<Article> getArticles(){
 
-        return articleRepository.findAll();
+        return aiFeedService.getLatest10DaysRecords();
     }
 
     @GetMapping(value = "/getStreamArticles",produces = MediaType.TEXT_EVENT_STREAM_VALUE)

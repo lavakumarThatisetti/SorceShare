@@ -47,7 +47,6 @@ public class KafkaConfiguration {
         configProps.put( ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configProps.put( ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configProps.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getGroupId());
-//        configProps.put(ConsumerConfig.CLIENT_ID_CONFIG, "Kafka-consumer");
         configProps.put( ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
 
         return new DefaultKafkaReceiver(ConsumerFactory.INSTANCE,

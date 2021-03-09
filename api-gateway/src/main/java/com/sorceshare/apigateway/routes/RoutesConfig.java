@@ -14,8 +14,10 @@ import javax.annotation.PostConstruct;
 @Slf4j
 public class RoutesConfig {
 
-    private static final String USER_SIGN_IN_PATH = "/SignIn";
-    private static final String USER_SIGN_UP_PATH = "/SignUp/**";
+    private static final String USER_SIGN_IN_PATH = "/api/auth/signIn";
+    private static final String USER_SIGN_UP_PATH = "/api/auth/signUp";
+    private static final String AI_STREAM_INITIAL_LOAD = "/api/aiStream/initialLoadArticles";
+    private static final String REAL_TIME_STREAM = "/api/aiStream/getStreamArticles";
 
     @Autowired
     private RouteProperties routeProperties;
@@ -31,12 +33,22 @@ public class RoutesConfig {
         return builder.routes()
         .route(
                 r -> r.path(USER_SIGN_UP_PATH)
-                      .uri(routeProperties.getUserStore().getUrl().getSignUp())
+                        .and()
+                      .uri(routeProperties.getUrl().getUserStore())
+
         )
         .route(
                 r -> r.path(USER_SIGN_IN_PATH)
                         .and()
-                        .uri(routeProperties.getUserStore().getUrl().getSignIn())
+                        .uri(routeProperties.getUrl().getUserStore())
+        )
+        .route(
+                r -> r.path(AI_STREAM_INITIAL_LOAD)
+                        .uri(routeProperties.getUrl().getAiFeedService())
+        )
+        .route(
+                r -> r.path(REAL_TIME_STREAM)
+                        .uri(routeProperties.getUrl().getAiFeedService())
         )
         .build();
     }

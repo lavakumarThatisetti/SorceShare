@@ -8,7 +8,7 @@ from api.webCrawl.classification import lableClassification
 import uuid
 indian_express_links = {
     "opinion": "https://indianexpress.com/section/opinion/",
-    "india": "https://indianexpress.com/section/opinion/"
+    "india": "https://indianexpress.com/section/india/"
 }
 
 indian_express_cache = {}

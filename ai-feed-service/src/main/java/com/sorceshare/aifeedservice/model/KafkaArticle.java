@@ -11,6 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 public class KafkaArticle {
 
+    private String Id;
+
     private String articleTitle;
 
     private List<String> articleLabels;

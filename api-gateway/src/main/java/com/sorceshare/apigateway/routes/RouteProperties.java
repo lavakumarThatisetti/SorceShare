@@ -8,18 +8,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties(prefix = "routes")
 public class RouteProperties {
-    private UserStore userStore;
+    private URL url;
 
     @Getter
     @Setter
-    public static class UserStore{
-        private UserStoreURL url;
-
-        @Setter
-        @Getter
-        public static class UserStoreURL {
-            private String signUp;
-            private String signIn;
-        }
+    public static class URL{
+        private String userStore;
+        private String aiFeedService;
     }
 }
