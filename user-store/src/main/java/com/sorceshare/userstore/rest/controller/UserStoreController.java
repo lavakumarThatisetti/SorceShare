@@ -13,12 +13,14 @@ import com.sorceshare.userstore.security.services.UserDetailsImpl;
 import com.sorceshare.userstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -107,6 +109,7 @@ public class UserStoreController {
         return ResponseEntity.ok(createdUser);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PutMapping(produces = "application/json", value = "/updateUser/{userId}")
     public ResponseEntity<UserCreate> updateUser(@NotBlank @PathVariable long userId,
                                                  @Valid @RequestBody User userBase, BindingResult bindingResult){
@@ -117,9 +120,18 @@ public class UserStoreController {
         }catch (Exception e) {
             ResponseEntity.ok(e.getMessage());
         }
+        AccessTokenMapper accessTokenMapper = (AccessTokenMapper)
+                ((OAuth2AuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getDecodedDetails();
+
+        System.out.println("ID:"+accessTokenMapper.getId());
+        System.out.println("Name:"+accessTokenMapper.getName());
+        System.out.println("Email ID:"+accessTokenMapper.getUserName());
+
+
         return ResponseEntity.ok(userDetailsService.updateUser(userId, userBase));
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PutMapping(produces = "application/json", value = "/updatePassword/{userId}")
     public ResponseEntity<UserCreate> updatePassword(@NotBlank @PathVariable long userId,
                                                      @Valid @RequestBody UpdateUserPassword updateUserPassword, BindingResult bindingResult){

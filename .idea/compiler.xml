@@ -9,14 +9,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="user-store" />
         <module name="cron-job-api" />
-        <module name="service-registry" />
-        <module name="ai-feed-service" />
         <module name="api-gateway" />
+        <module name="ai-feed-service" />
+        <module name="auth-server" />
+        <module name="service-registry" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ai-feed-service" target="1.8" />
       <module name="api-gateway" target="1.8" />
+      <module name="auth-server" target="1.8" />
       <module name="cron-job-api" target="1.8" />
       <module name="service-registry" target="1.8" />
       <module name="user-store" target="1.8" />
@@ -27,6 +29,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ai-feed-service" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
+      <module name="auth-server" options="-parameters" />
       <module name="cron-job-api" options="-parameters" />
       <module name="service-registry" options="-parameters" />
       <module name="user-store" options="-parameters" />

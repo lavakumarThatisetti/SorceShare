@@ -1,0 +1,73 @@
+server:
+  port: 8086
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: authe-server
+    description: Authentcation Server
+    version: 0.0.1
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sorceshare
+    username: postgres
+    password: masterpassword287
+    driverClassName: org.postgresql.Driver
+    initialization-mode: always
+  jpa:
+    generte-ddl: false
+    hibernate:
+      ddl-auto: none
+    show_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  jwt:
+    secret: secretcode
+    expirationMs: 86400000
+
+config:
+  oauth2:
+    clientid: lavakumar
+    clientSecret: lavakumar287
+    privateKey: -----BEGIN RSA PRIVATE KEY-----
+      MIIEogIBAAKCAQEAs+E63C4yJYoKhe7IaRXzgTLoXobFRl/mRjLLxgcM7KEx7fty
+      9zOuz2JSwOaWBSNjyNYCtQvMdcq9n3W+2LcQlEXgq064UHw9ywr9OTJrQEE7cNAc
+      d3NREMumWGDhm/9S7huLyCflpfovPXhoNkcbpTSYFcrBvgaX1t34l++X165DqvMP
+      5wxL63ndTF4+ziuu/7N61vwhndgqmZApvewuZVeLgj7uXJV1l4O+6EF3yhI3CUkh
+      uY1xkoN5JRfpdhwiKi0Zao0Nxg4CQjVvI86FhzH2q4t2asOHP2nAJGgbSR/OrXUt
+      /1s320ppwoiaUHhlnnCyUh62b4zUKTwflOP1kwIDAQABAoIBABEqVyGXzvVCHQr2
+      5G0SyS/1GbObjMvQbvsX8dYt6g/Suh8JtcjdR7tGmLsLxhkrbWRG9+8q9xHujPXg
+      mJu5rH1ZxbzTQEd986+iltOUeiOhlfiIA49qk7vUk0UvyZfHX7SVMFujYwjZvRRS
+      ny8+zeaQBEtgE+j8XBUHDagCFy1frK90SnaSh3d8Om3ECkFUMGkoB6wgf8g0/VOa
+      oLKllHiAWVrCY1kC68u9Bnjw3Sj0O9uMrSnZLiQVswWTuvmrUx6gIHONYmdwWXxF
+      hjcmASuGI+sM+WQtSmkKbqGyRtpbJ3l4Wkm0ByeCfrtdvzODYfdJ4F95xx4inG7U
+      ZcxWZeECgYEA7VMC06MC6lTlxdeYpae/WLj0IZvuuA+JNq/E84ScCv9ZSljj6s3f
+      9/diwduCL0cNZKCpEsRb37ktyqKJoiMSG4TQF0YuBKG2oupnqLGqhpJc7hgy0i0b
+      3CBxqyzq+iApdo2u5jZW6FvyxnQ+1q3NqJJrGMOvcouWu4ABuasV6ZsCgYEAwgj6
+      Y++sIeUFJ4CfnF5nBrpTk61/DFyVS9CUmADlF3FB4hFg/GCwN9jpT1P/ynFxLm/O
+      xpC6XvUYJ2BN6HbiiJJmn+oBoGZLtZsjt1rMoVGywPl7AgOVOWSvj4RteGesLdrZ
+      XY9JiRG8aDP9MdwIQKmfm01X/ZHb9RJP51DeP2kCgYB6lfJT11PeLtQxCVgz2R4h
+      egfAhIceVAgQU2JsVwczNwqsOJYh5w3VS9ebQwNP4Geunr42j27VdRWOIb7uHSdx
+      R30lSH7krZNlO6cnn/3xXRDbe2xk3CAT6D5OqPkHEi3Yqv64s0DY7QXONKVwxn4A
+      oQDo3ct2Y1wMpeY+PX0oGQKBgHYWWrSpb3vtUpa46+qRdWgdy7GLnE+cpOvQFC7y
+      FHqQ3gTEiN7vxS8n3s39lCXTposZVqF4AUS7KykDrkZ02+c8GiLmmnjQ6PCsay8y
+      nmjrPLu+2YLfRVj5kvLoKGtnxNzfXPxYsOsvlRdh1I0cmRUpZk5w4sUamN/sdh6U
+      E75JAoGAGIfS7PVSvFpdArjWtUuKbWZFZBMR+U1vEGZLO8vXi1x1Nnr3BB6V1xUC
+      38UcMlcrKuIH/4QjKS6Bfr58RF1KHoKCSlGBWxuZubBjRPveUJQVLHHZKuTf3aLN
+      q+xgUN9Yn31p60DzEY+OW+hpwSXi7uj7pRkm2Gon9OPpbmVl4u4=
+      -----END RSA PRIVATE KEY-----
+    publicKey: -----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs+E63C4yJYoKhe7IaRXz
+      gTLoXobFRl/mRjLLxgcM7KEx7fty9zOuz2JSwOaWBSNjyNYCtQvMdcq9n3W+2LcQ
+      lEXgq064UHw9ywr9OTJrQEE7cNAcd3NREMumWGDhm/9S7huLyCflpfovPXhoNkcb
+      pTSYFcrBvgaX1t34l++X165DqvMP5wxL63ndTF4+ziuu/7N61vwhndgqmZApvewu
+      ZVeLgj7uXJV1l4O+6EF3yhI3CUkhuY1xkoN5JRfpdhwiKi0Zao0Nxg4CQjVvI86F
+      hzH2q4t2asOHP2nAJGgbSR/OrXUt/1s320ppwoiaUHhlnnCyUh62b4zUKTwflOP1
+      kwIDAQAB
+      -----END PUBLIC KEY-----

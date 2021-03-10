@@ -31,3 +31,17 @@ spring:
   jwt:
     secret: secretcode
     expirationMs: 86400000
+
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-value: -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs+E63C4yJYoKhe7IaRXz
+          gTLoXobFRl/mRjLLxgcM7KEx7fty9zOuz2JSwOaWBSNjyNYCtQvMdcq9n3W+2LcQ
+          lEXgq064UHw9ywr9OTJrQEE7cNAcd3NREMumWGDhm/9S7huLyCflpfovPXhoNkcb
+          pTSYFcrBvgaX1t34l++X165DqvMP5wxL63ndTF4+ziuu/7N61vwhndgqmZApvewu
+          ZVeLgj7uXJV1l4O+6EF3yhI3CUkhuY1xkoN5JRfpdhwiKi0Zao0Nxg4CQjVvI86F
+          hzH2q4t2asOHP2nAJGgbSR/OrXUt/1s320ppwoiaUHhlnnCyUh62b4zUKTwflOP1
+          kwIDAQAB
+          -----END PUBLIC KEY-----
